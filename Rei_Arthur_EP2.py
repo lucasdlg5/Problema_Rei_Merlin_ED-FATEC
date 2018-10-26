@@ -1,12 +1,6 @@
 import re
 
-def verifica_encalhada(Lista_escolhas_damas):
-
-
-    return 1
-
-
-with open (".\casamento2.txt","r") as casamento:
+"""with open (".\casamento.txt","r") as casamento:
     damas_nomes,damas_c, cavaleiros_nomes, damas_escolhas, temp, index, cont_noivas = [], [], [], [], [], 0, 0
     damas = casamento.readlines()
     for dama in damas:
@@ -48,10 +42,13 @@ with open (".\casamento2.txt","r") as casamento:
         print ("A quantidade de escolhas '{0}' foi diferente de numero de noivas '{1}'".format (cont_noivas, len(damas_escolhas)))
     else:
         print("Todas as noivas tiveram seus pares!!")
-    casamento.close()
+    casamento.close()"""
 
 
-"""with open (".\cavaleiros.txt","r") as cavaleiros:
+with open (".\cavaleiros2.txt","r") as cavaleiros:
+    sequencia, temp = [], []
     mesa = cavaleiros.readlines()
-
-    cavaleiros.close()"""
+    for combinacao in mesa:
+        sequencia.append(combinacao.split())
+    print ("Total de combinacoes: '{0}'\n Lista: '{1}'".format(len(sequencia), sequencia))
+    cavaleiros.close()
