@@ -1,6 +1,7 @@
 import re
 
-"""with open (".\casamento.txt","r") as casamento:
+with open (".\casamento.txt","r") as casamento: #CASO FUNCIONANDO
+# with open (".\casamento2.txt","r") as casamento: #CASO FALHA
     damas_nomes,damas_c, cavaleiros_nomes, damas_escolhas, temp, index, cont_noivas = [], [], [], [], [], 0, 0
     damas = casamento.readlines()
     for dama in damas:
@@ -16,9 +17,9 @@ import re
             cavaleiros_nomes.append(c) #Guardando nomes dos cavaleiros
         cavaleiros_nomes = list (set(cavaleiros_nomes)) #Removendo nomes duplicados da lista de cavaleiros disponiveis
 
-    print ("\n Nome das damas: '{0}'" .format(damas_nomes))
-    print ("\n Cavaleiros escolhidos pelas damas: '{0}'".format( cavaleiros_nomes))
-    print ("\n Escolha das damas com cavaleiros: '{0}' \n".format( damas_escolhas))
+    # print ("\n Nome das damas: '{0}'" .format(damas_nomes))
+    # print ("\n Cavaleiros escolhidos pelas damas: '{0}'".format( cavaleiros_nomes))
+    # print ("\n Escolha das damas com cavaleiros: '{0}' \n".format( damas_escolhas))
 
 
     # Função recursiva para escolha dos candidatos
@@ -42,13 +43,45 @@ import re
         print ("A quantidade de escolhas '{0}' foi diferente de numero de noivas '{1}'".format (cont_noivas, len(damas_escolhas)))
     else:
         print("Todas as noivas tiveram seus pares!!")
-    casamento.close()"""
+    casamento.close()
 
 
-with open (".\cavaleiros2.txt","r") as cavaleiros:
-    sequencia, temp = [], []
+with open (".\cavaleiros.txt","r") as cavaleiros: #CASO FUNCIONANDO - CORRIGIDO POR LUCAS
+# with open (".\cavaleiros.txt","r") as cavaleiros: #CASO MASSANORI - APAREMENTEMENTE COM ERROS (SEQUENCIA DISPOSTA DIFERENTE DA IMAGEM DO CASO CORRETO COM A LISTA)
+# with open (".\cavaleiros.txt","r") as cavaleiros: #CASO FALHA
+    sequencia, temp_c, index, err = [], [], 0, 0 
     mesa = cavaleiros.readlines()
     for combinacao in mesa:
         sequencia.append(combinacao.split())
-    print ("Total de combinacoes: '{0}'\n Lista: '{1}'".format(len(sequencia), sequencia))
+    #print ("Total de combinacoes: '{0}'\n Lista: '{1}'".format(len(sequencia), sequencia))
+
+    for cav_principal in sequencia:
+        temp_c = []
+        temp_c.append (cav_principal[0])
+        temp_c = set(temp_c)  
+         
+        if (temp_c.issubset(sequencia[index-1])):
+            if (index == 6):
+                index = 0  
+            if (temp_c.issubset(sequencia[index == 0 and 6 or index+1]) == False): #Comentar esta linha para descomentar as tres abaixo (logica invertida)
+            # if (temp_c.issubset(sequencia[index == 0 and 6 or index+1]) == False):
+                # print ("O cavaleiro '{0}' está ok com seus colegas ao lado".format(temp_c))
+            # else:
+
+            # Descomentar daqui para baixo para Logs
+                # print ("Erro!")
+                # print ("O cavaleiro '{0}' BRIGOU com seus colegas ao lado".format(temp_c))
+                err = 1
+                break
+        else:
+            # Descomentar daqui para baixo para Logs
+            # print ("Erro!")
+            # print ("O cavaleiro '{0}' BRIGOU com seus colegas ao lado".format(temp_c))
+            err = 1
+            break
+        index += 1
+    if (err == 1):
+        print ("Os cavaleiros brigaram")
+    else:
+        print ("Tudo ocorreu bem com os cavaleiros!!")
     cavaleiros.close()
