@@ -1,7 +1,7 @@
 import re
 
-with open (".\casamento.txt","r") as casamento: #CASO FUNCIONANDO
-# with open (".\casamento2.txt","r") as casamento: #CASO FALHA
+with open ("Problema_Rei_Merlin_ED-FATEC\casamento.txt","r") as casamento: #CASO FUNCIONANDO
+# with open ("Problema_Rei_Merlin_ED-FATEC\casamento2.txt","r") as casamento: #CASO FALHA
     damas_nomes,damas_c, cavaleiros_nomes, damas_escolhas, temp, index, cont_noivas = [], [], [], [], [], 0, 0
     damas = casamento.readlines()
     for dama in damas:
@@ -46,9 +46,9 @@ with open (".\casamento.txt","r") as casamento: #CASO FUNCIONANDO
     casamento.close()
 
 
-with open (".\cavaleiros.txt","r") as cavaleiros: #CASO FUNCIONANDO - CORRIGIDO POR LUCAS
-# with open (".\cavaleiros.txt","r") as cavaleiros: #CASO MASSANORI - APAREMENTEMENTE COM ERROS (SEQUENCIA DISPOSTA DIFERENTE DA IMAGEM DO CASO CORRETO COM A LISTA)
-# with open (".\cavaleiros.txt","r") as cavaleiros: #CASO FALHA
+with open ("Problema_Rei_Merlin_ED-FATEC\cavaleiros.txt","r") as cavaleiros: #CASO FUNCIONANDO - CORRIGIDO POR LUCAS
+# with open ("Problema_Rei_Merlin_ED-FATEC\cavaleiros.txt","r") as cavaleiros: #CASO MASSANORI - APAREMENTEMENTE COM ERROS (SEQUENCIA DISPOSTA DIFERENTE DA IMAGEM DO CASO CORRETO COM A LISTA)
+# with open ("Problema_Rei_Merlin_ED-FATEC\cavaleiros.txt","r") as cavaleiros: #CASO FALHA
     sequencia, temp_c, index, err = [], [], 0, 0 
     mesa = cavaleiros.readlines()
     for combinacao in mesa:
